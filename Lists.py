@@ -4,7 +4,6 @@
 #functions as explained above.
 
 
-
 #PROBLEM 1 (8-ball - 5pts)
 # A magic 8-ball, when asked a question, provides a random answer from a list.
 # The code below contains a list of possible answers. Create a magic 8-ball program that
