@@ -17,11 +17,11 @@ now", "Cannot predict now", "Concentrate and ask again", "Don ' t \
 count on it", "My reply is no", "My sources say no", "Outlook \
 not so good", "Very doubtful" ]
 
-'''
+
 number = random.randrange(20)
 print(str(input("Have a yes or no question? Ask the magic 8 ball! ")))
 print(answer_list[number])
-'''
+
 # PROBLEM 2 (Shuffle - 5pts)
 # A playing card consists of a suit (Heart, Diamond, Club, Spade) and a value (2,3,4,5,6,7,8,9,10,J,Q,K,A).
 # Create a list of all possible playing cards, which is a deck.
@@ -71,6 +71,7 @@ prime_list = []
 for i in range(1,1001):
     number_list.append(i)
 number_list[0] = 0
+
 print(number_list)
 for i in range(len(number_list)):
     if (i + 1) % 2 == 0:
@@ -89,11 +90,44 @@ for i in range(len(number_list)):
         number_list[i] = 0
         number_list.append(i)
 
+    if (i + 1) % 11 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+    if (i + 1) % 13 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+    if (i + 1) % 17 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+    if (i + 1) % 19 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+    if (i + 1) % 23 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+    if (i + 1) % 29 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+    if (i + 1) % 31 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
 number_list[1] = 2
 number_list[2] = 3
 number_list[4] = 5
 number_list[6] = 7
-
+number_list[10] = 11
+number_list[12] = 13
+number_list[16] = 17
+number_list[18] = 19
+number_list[22] = 23
+number_list[28] = 29
+number_list[30] = 31
 print(number_list)
 
 
