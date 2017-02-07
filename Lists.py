@@ -2,7 +2,7 @@
 #In these exercises you write functions. Of course, you should not only write the functions,
 #you should also write code to test them. For practice, you should also comment your
 #functions as explained above.
-
+#
 import random
 
 #PROBLEM 1 (8-ball - 5pts)
