@@ -3,6 +3,7 @@
 #you should also write code to test them. For practice, you should also comment your
 #functions as explained above.
 
+import random
 
 #PROBLEM 1 (8-ball - 5pts)
 # A magic 8-ball, when asked a question, provides a random answer from a list.
@@ -16,11 +17,40 @@ now", "Cannot predict now", "Concentrate and ask again", "Don ' t \
 count on it", "My reply is no", "My sources say no", "Outlook \
 not so good", "Very doubtful" ]
 
-
+'''
+number = random.randrange(20)
+print(str(input("Have a yes or no question? Ask the magic 8 ball! ")))
+print(answer_list[number])
+'''
 # PROBLEM 2 (Shuffle - 5pts)
 # A playing card consists of a suit (Heart, Diamond, Club, Spade) and a value (2,3,4,5,6,7,8,9,10,J,Q,K,A).
 # Create a list of all possible playing cards, which is a deck.
 # Then create a function that shuffles the deck, producing a random order.
+import random
+suit_list = ["hearts", "diamonds", "clubs", "spades"]
+value_list = [2,3,4,5,6,7,8,9,10, "Jack", "Queen", "King", "Ace"]
+deck = []
+
+cards = 0
+for i in range(1000):
+    suit = random.choice(suit_list)
+    value = random.choice(value_list)
+    card = (value, "of", suit)
+    deck.append(card)
+    deck.reverse()
+    if deck.count(card) == 2:
+        deck.pop(0)
+        continue
+    cards += 1
+    if cards == 53:
+        break
+print(deck)
+
+def shuffled():
+    random.shuffle(deck)
+    print(deck)
+shuffled()
+
 
 
 # PROBLEM 3 (The sieve of Eratosthenes - 10pts)
@@ -35,6 +65,37 @@ not so good", "Very doubtful" ]
 # Process all the numbers of the list in this way. When you have finished,
 # the only numbers left on the list are primes.
 # Use this method to determine all the primes between 1 and 1000.
+
+number_list = []
+prime_list = []
+for i in range(1,1001):
+    number_list.append(i)
+number_list[0] = 0
+print(number_list)
+for i in range(len(number_list)):
+    if (i + 1) % 2 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+    if (i + 1) % 3 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+    if (i + 1) % 5 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+    if (i + 1) % 7 == 0:
+        number_list[i] = 0
+        number_list.append(i)
+
+number_list[1] = 2
+number_list[2] = 3
+number_list[4] = 5
+number_list[6] = 7
+
+print(number_list)
+
 
 # PROBLEM 4 (Tic-Tac-Toe - 15pts)
 # Write a Tic-Tac-Toe program that allows two people to play the game against each other.
@@ -70,6 +131,148 @@ not so good", "Very doubtful" ]
 #       announce draw
 #       break
 #   switch player
+
+
+#Having a lot of issues with getting each move to show up. The "x" or "o" only appears on the board like half the time. Also a lot of redundancy
+
+row_1 = [4 * " " + "|" + 4 * " " + "|" + 4 * " "]
+row_2 = [4 * " " + "|" + 4 * " " + "|" + 4 * " "]
+row_3 = [4 * " " + "|" + 4 * " " + "|" + 4 * " "]
+def draw_board():
+
+    print(row_1[0])
+    print(14 * "-")
+    print(row_2[0])
+    print(14 * "-")
+    print(row_3[0])
+
+
+    '''
+    print(4 * " " + "|" + 4 * " " + "|" + 4 * " ")
+    print(4 * " " + "|" + 4 * " " + "|" + 4 * " ")
+    print(14 * "-")
+    print(4 * " " + "|" + 4 * " " + "|" + 4 * " ")
+    print(4 * " " + "|" + 4 * " " + "|" + 4 * " ")
+    print(14 * "-")
+    print(4 * " " + "|" + 4 * " " + "|" + 4 * " ")
+    print(4 * " " + "|" + 4 * " " + "|" + 4 * " ")
+    '''
+
+
+place_list = []
+done = False
+
+
+turns = 0
+x_list = []
+y_list = []
+player = "x"
+while True:
+    draw_board()
+    row = int(input("Enter a row, 1, 2, or 3: "))
+    column = int(input("Enter a column, 1, 2, or 3: "))
+    place = row, column
+    place_list.append(place)
+    print(place_list)
+    if place_list.count(place) == 1:
+
+        if turns % 2 == 0:
+            player = "x"
+        if turns % 2 != 0:
+            player = "o"
+        if place == (1,1):
+            row_1 = [2 * " " + player + " " + "|" + 4 * " " + "|" + 4 * " "]
+            if player == "x":
+                x_list.append(1)
+            if player == "y":
+                y_list.append(1)
+            print(x_list)
+        elif place == (1,2):
+            row_1 = [4 * " " + "|" + 2 * " " + player + " " + "|" + 4 * " "]
+            if player == "x":
+                x_list.append(2)
+            if player == "y":
+                y_list.append(2)
+        elif place == (1,3):
+            row_1 = [4 * " " + "|" + 4 * " " + "|" + 2 * " " + player + " "]
+            if player == "x":
+                x_list.append(3)
+            if player == "y":
+                y_list.append(3)
+        elif place == (2,1):
+            row_2 = [2 * " " + player + " " + "|" + 4 * " " + "|" + 4 * " "]
+            if player == "x":
+                x_list.append(4)
+            if player == "y":
+                y_list.append(4)
+        elif place == (2,2):
+            row_2 = [4 * " " + "|" + 2 * " " + player + " " + "|" + 4 * " "]
+            if player == "x":
+                x_list.append(5)
+            if player == "y":
+                y_list.append(5)
+        elif place == (2,3):
+            row_2 = [4 * " " + "|" + 4 * " " + "|" + 2 * " " + player + " "]
+            if player == "x":
+                x_list.append(6)
+            if player == "y":
+                y_list.append(6)
+        elif place == (3,1):
+            row_3 = [2 * " " + player + " " + "|" + 4 * " " + "|" + 4 * " "]
+            if player == "x":
+                x_list.append(7)
+            if player == "y":
+                y_list.append(7)
+        elif place == (3,2):
+            row_3 = [4 * " " + "|" + 2 * " " + player + " " + "|" + 4 * " "]
+            if player == "x":
+                x_list.append(8)
+            if player == "y":
+                y_list.append(8)
+        elif place == (3,3):
+            row_3 = [4 * " " + "|" + 4 * " " + "|" + 2 * " " + player + " "]
+            if player == "x":
+                x_list.append(9)
+            if player == "y":
+                y_list.append(9)
+    if place_list.count(place) != 1:
+        print("That has already been done! You lose your turn")
+
+    turns += 1
+    if turns == 9:
+        print("Tie game! Neither player wins")
+        break
+
+    if x_list.count(1) == 1 and x_list.count(2) == 1 and x_list.count(3) == 1:
+        print("X WINS!")
+        break
+    if x_list.count(4) == 1 and x_list.count(5) == 1 and x_list.count(6) == 1:
+        print("X WINS!")
+        break
+    if x_list.count(7) == 1 and x_list.count(8) == 1 and x_list.count(9) == 1:
+        print("X WINS!")
+        break
+    if x_list.count(1) == 1 and x_list.count(4) == 1 and x_list.count(7) == 1:
+        print("X WINS!")
+        break
+    if x_list.count(2) == 1 and x_list.count(5) == 1 and x_list.count(8) == 1:
+        print("X WINS!")
+        break
+    if x_list.count(3) == 1 and x_list.count(6) == 1 and x_list.count(9) == 1:
+        print("X WINS!")
+        break
+    if x_list.count(1) == 1 and x_list.count(5) == 1 and x_list.count(9) == 1:
+        print("X WINS!")
+        break
+    if x_list.count(3) == 1 and x_list.count(5) == 1 and x_list.count(7) == 1:
+        print("X WINS!")
+        break
+
+    #This is sooooo redundant and I dont really know how to make it quicker right now
+
+
+
+
 
 # CHALLENGE PROBLEM 5 (Battleship NO CREDIT, JUST IF YOU WANT TO TRY IT)
 # Create a program that is a simplified version of the game “Battleship.”
