@@ -1,3 +1,15 @@
+'''
+You definitely have some redundancy in there.
+Functions on tic-tac-toe would be appropriate here.
+Look to the given pseudo code.
+It tells you which functions to make.
+Then make a game loop which calls the functions in that order.
+Your program ends up wiping recorded x and o from
+your list because of some faulty if statements that
+are triggering.  Simplifying the code would
+likely uncover those errors.  Nice job overall though.
+'''
+
 #LISTS (35PTS TOTAL)
 #In these exercises you write functions. Of course, you should not only write the functions,
 #you should also write code to test them. For practice, you should also comment your
